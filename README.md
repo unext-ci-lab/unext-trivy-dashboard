@@ -1,0 +1,1 @@
+# unext-trivy-dashboard
