@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivy Security Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        canvas { max-width: 600px; margin: auto; }
+    </style>
+</head>
+<body>
+    <h1>Trivy Security Dashboard</h1>
+    <canvas id="vulnerabilityChart"></canvas>
+    <script>
+        async function fetchResults() {
+            const response = await fetch('trivy-results.json'); // Adjust the path as necessary
+            const data = await response.json();
+            return data.Results;
+        }
+
+        function parseVulnerabilities(results) {
+            const severityCounts = {
+                'CRITICAL': 0,
+                'HIGH': 0,
+                'MEDIUM': 0,
+                'LOW': 0,
+                'UNKNOWN': 0,
+            };
+
+            results.forEach(result => {
+                result.Vulnerabilities.forEach(vuln => {
+                    severityCounts[vuln.Severity] = (severityCounts[vuln.Severity] || 0) + 1;
+                });
+            });
+
+            return severityCounts;
+        }
+
+        async function renderChart() {
+            const results = await fetchResults();
+            const severityCounts = parseVulnerabilities(results);
+            const ctx = document.getElementById('vulnerabilityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(severityCounts),
+                    datasets: [{
+                        label: 'Vulnerabilities Count',
+                        data: Object.values(severityCounts),
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        renderChart();
+    </script>
+</body>
+</html>
