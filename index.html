@@ -27,7 +27,7 @@
                 <th>ID</th>
                 <th>Severity</th>
                 <th>Package</th>
-                <th>Description</th>
+                <th>Title</th>
                 <th>Fixed Version</th>
                 <th>More Info</th>
             </tr>
@@ -59,7 +59,8 @@
                         id: vuln.VulnerabilityID,
                         severity: vuln.Severity,
                         packageName: vuln.PkgName,
-                        description: vuln.Title || vuln.Description,
+                        Title: vuln.Title,                        
+                        description: vuln.Description,
                         fixedVersion: vuln.FixedVersion || 'N/A',
                         primaryURL: vuln.PrimaryURL || 'N/A',
                         references: vuln.References || [],
@@ -118,7 +119,7 @@
                     <td>${vuln.id}</td>
                     <td>${vuln.severity}</td>
                     <td>${vuln.packageName}</td>
-                    <td>${vuln.description}</td>
+                    <td>${vuln.Title}</td>
                     <td>${vuln.fixedVersion}</td>
                     <td class="expandable" onclick="toggleDetails(${index})">Show Details</td>
                 `;
