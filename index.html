@@ -8,11 +8,30 @@
     <style>
         body { font-family: Arial, sans-serif; }
         canvas { max-width: 600px; margin: auto; }
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; }
+        table, th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; text-align: center; }
+        td { text-align: left; }
     </style>
 </head>
 <body>
     <h1>Trivy Security Dashboard</h1>
     <canvas id="vulnerabilityChart"></canvas>
+
+    <h2>Vulnerability Details</h2>
+    <table id="vulnerabilityTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Severity</th>
+                <th>Package</th>
+                <th>Description</th>
+                <th>Fixed Version</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
     <script>
         async function fetchResults() {
             const response = await fetch('trivy-results.json'); // Adjust the path as necessary
@@ -29,18 +48,28 @@
                 'UNKNOWN': 0,
             };
 
+            const vulnerabilities = [];
             results.forEach(result => {
                 result.Vulnerabilities.forEach(vuln => {
                     severityCounts[vuln.Severity] = (severityCounts[vuln.Severity] || 0) + 1;
+                    vulnerabilities.push({
+                        id: vuln.VulnerabilityID,
+                        severity: vuln.Severity,
+                        packageName: vuln.PkgName,
+                        description: vuln.Title || vuln.Description,
+                        fixedVersion: vuln.FixedVersion || 'N/A'
+                    });
                 });
             });
 
-            return severityCounts;
+            return { severityCounts, vulnerabilities };
         }
 
         async function renderChart() {
             const results = await fetchResults();
-            const severityCounts = parseVulnerabilities(results);
+            const { severityCounts, vulnerabilities } = parseVulnerabilities(results);
+
+            // Render chart
             const ctx = document.getElementById('vulnerabilityChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
@@ -73,6 +102,20 @@
                         }
                     }
                 }
+            });
+
+            // Render table
+            const tableBody = document.getElementById('vulnerabilityTable').querySelector('tbody');
+            vulnerabilities.forEach(vuln => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${vuln.id}</td>
+                    <td>${vuln.severity}</td>
+                    <td>${vuln.packageName}</td>
+                    <td>${vuln.description}</td>
+                    <td>${vuln.fixedVersion}</td>
+                `;
+                tableBody.appendChild(row);
             });
         }
 
