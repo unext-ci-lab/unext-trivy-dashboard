@@ -59,9 +59,10 @@
                         id: vuln.VulnerabilityID,
                         severity: vuln.Severity,
                         packageName: vuln.PkgName,
-                        Title: vuln.Title,                        
+                        Title: vuln.Title,
                         description: vuln.Description,
                         fixedVersion: vuln.FixedVersion || 'N/A',
+                        installedVersion : vuln.InstalledVersion || 'N/A',
                         primaryURL: vuln.PrimaryURL || 'N/A',
                         references: vuln.References || [],
                         cweIds: vuln.CweIDs ? vuln.CweIDs.join(', ') : 'N/A',
@@ -130,10 +131,11 @@
                 detailsRow.id = `details-${index}`;
                 detailsRow.innerHTML = `
                     <td colspan="6">
-                        <strong>Description:</strong> ${vuln.description}<br>
+                        <strong>Description:</strong> ${vuln.description}<br><br>
+                        <strong>Installed Version:</strong>${vuln.installedVersion}<br>
                         <strong>PkgIdentifier:</strong>${vuln.purl}<br>
-                        <strong>CWE IDs:</strong> ${vuln.cweIds}<br>
-                        <strong>Primary URL:</strong> <a href="${vuln.primaryURL}" target="_blank">${vuln.primaryURL}</a><br>                        
+                        <strong>CWE IDs:</strong> ${vuln.cweIds}<br><br>
+                        <strong>Primary URL:</strong> <a href="${vuln.primaryURL}" target="_blank">${vuln.primaryURL}</a><br><br>
                         <strong>References:</strong><br>
                         ${vuln.references.map(ref => `<a href="${ref}" target="_blank">${ref}</a>`).join('<br>')}
                     </td>
