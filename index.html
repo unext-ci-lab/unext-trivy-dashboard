@@ -24,12 +24,12 @@
     <table id="vulnerabilityTable">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Vulnerability</th>
                 <th>Severity</th>
                 <th>Package</th>
                 <th>Title</th>
-                <th>Installed Version</th>
-                <th>Fixed Version</th>
+                <th>Recommend</th>
+                <th>Fixed Version</th>                
                 <th>More Info</th>
             </tr>
         </thead>
@@ -59,11 +59,15 @@
                     vulnerabilities.push({
                         id: vuln.VulnerabilityID,
                         severity: vuln.Severity,
-                        packageName: vuln.PkgName,
+                        packageId: vuln.PkgID,
+                        packageName: vuln.PkgName,                        
                         Title: vuln.Title,
                         description: vuln.Description,
                         fixedVersion: vuln.FixedVersion || 'N/A',
                         installedVersion : vuln.InstalledVersion || 'N/A',
+                        status : vuln.Status || 'N/A',
+                        publishedDate : vuln.PublishedDate || 'N/A',
+                        lastModifiedDate : vuln.LastModifiedDate || 'N/A',
                         primaryURL: vuln.PrimaryURL || 'N/A',
                         references: vuln.References || [],
                         cweIds: vuln.CweIDs ? vuln.CweIDs.join(', ') : 'N/A',
@@ -121,9 +125,9 @@
                 row.innerHTML = `
                     <td>${vuln.id}</td>
                     <td>${vuln.severity}</td>
-                    <td>${vuln.packageName}</td>
+                    <td>${vuln.packageId}</td>
                     <td>${vuln.Title}</td>
-                    <td>${vuln.installedVersion}</td>
+                    <td>${vuln.status}</td>
                     <td>${vuln.fixedVersion}</td>
                     <td class="expandable" onclick="toggleDetails(${index})">Show Details</td>
                 `;
@@ -134,7 +138,9 @@
                 detailsRow.innerHTML = `
                     <td colspan="6">
                         <strong>CWE IDs:</strong> ${vuln.cweIds}<br>
-                        <strong>Description:</strong> ${vuln.description}<br><br>
+                        <strong>Description:</strong> ${vuln.description}<br>
+                        <strong>Published:</strong> ${vuln.publishedDate}<br>
+                        <strong>last Modified:</strong> ${vuln.lastModifiedDate}<br><br>
                         
                         <strong>Package Identifier:</strong>${vuln.purl}<br>                        
                         <strong>Installed Version:</strong>${vuln.installedVersion}<br>
