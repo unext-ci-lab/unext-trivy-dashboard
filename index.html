@@ -28,6 +28,7 @@
                 <th>Severity</th>
                 <th>Package</th>
                 <th>Title</th>
+                <th>Installed Version</th>
                 <th>Fixed Version</th>
                 <th>More Info</th>
             </tr>
@@ -122,6 +123,7 @@
                     <td>${vuln.severity}</td>
                     <td>${vuln.packageName}</td>
                     <td>${vuln.Title}</td>
+                    <td>${vuln.installedVersion}</td>
                     <td>${vuln.fixedVersion}</td>
                     <td class="expandable" onclick="toggleDetails(${index})">Show Details</td>
                 `;
@@ -131,10 +133,10 @@
                 detailsRow.id = `details-${index}`;
                 detailsRow.innerHTML = `
                     <td colspan="6">
-                        <strong>Description:</strong> ${vuln.description}<br>
                         <strong>CWE IDs:</strong> ${vuln.cweIds}<br>
-                        <strong>Package Identifier:</strong>${vuln.purl}<br><br>
+                        <strong>Description:</strong> ${vuln.description}<br><br>
                         
+                        <strong>Package Identifier:</strong>${vuln.purl}<br>                        
                         <strong>Installed Version:</strong>${vuln.installedVersion}<br>
                         <strong>Fixed Version:</strong>${vuln.fixedVersion}<br><br>                        
                         
