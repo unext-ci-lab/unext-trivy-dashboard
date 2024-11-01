@@ -131,10 +131,13 @@
                 detailsRow.id = `details-${index}`;
                 detailsRow.innerHTML = `
                     <td colspan="6">
-                        <strong>Description:</strong> ${vuln.description}<br><br>
+                        <strong>Description:</strong> ${vuln.description}<br>
+                        <strong>CWE IDs:</strong> ${vuln.cweIds}<br>
+                        <strong>Package Identifier:</strong>${vuln.purl}<br><br>
+                        
                         <strong>Installed Version:</strong>${vuln.installedVersion}<br>
-                        <strong>PkgIdentifier:</strong>${vuln.purl}<br>
-                        <strong>CWE IDs:</strong> ${vuln.cweIds}<br><br>
+                        <strong>Fixed Version:</strong>${vuln.fixedVersion}<br><br>                        
+                        
                         <strong>Primary URL:</strong> <a href="${vuln.primaryURL}" target="_blank">${vuln.primaryURL}</a><br><br>
                         <strong>References:</strong><br>
                         ${vuln.references.map(ref => `<a href="${ref}" target="_blank">${ref}</a>`).join('<br>')}
