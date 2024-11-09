@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2024-11-09T13:35:20.902338333Z",
+  "CreatedAt": "2024-11-09T13:47:27.735799231Z",
   "ArtifactName": "822188381723.dkr.ecr.ap-northeast-3.amazonaws.com/cilab-lifelong-api-master:dev-latest",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,25 +8,25 @@
       "Family": "alpine",
       "Name": "3.19.1"
     },
-    "ImageID": "sha256:102a1f590eeb53a9f45b96930b2edbf799c80eb395f6292d13a0de855c493a69",
+    "ImageID": "sha256:88ce1f055cdacb1cddd017139af3dfaf863690d2d33c167f9932b0b99b8eb16d",
     "DiffIDs": [
       "sha256:d4fc045c9e3a848011de66f34b81f052d4f2c15a17bb196d637e526349601820",
       "sha256:f82bfb71098a9f0cea45528cf948dbeb240a8fa819b9140bdd609ad6cfb32738",
       "sha256:abc5b1d00820bfda3db3fc7771c2171a6fac16dd98da4784b66ea8cbc8808d75",
       "sha256:413c136dedcf2f52c622f952deca19f804d8528256818088a4c12550e5670c2d",
-      "sha256:90b4d9a8c7ea87df21b947a67e3a41309fe5af6eba9d8188d9330a221f2fbe27",
+      "sha256:2a5bc0ad31eba226a20114ca441c2c996d9f4bd7d5d72558c1263b41db9e21b7",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-      "sha256:2ca2fcddc420a4637224b06e33ea1c0b066dbc93c1bb6115ed82828e3499ca33",
-      "sha256:d3e3ce3264938f4a2ed0e1ccf76dae808ae26ca5efd19950c5750b8bb85f7233",
-      "sha256:a09397e53ef6898ebda8d330a551730064ce04e3aca586dc7044e3d994f4b7ee"
+      "sha256:1ca887d2efc36901ab2386a4d760dc4f09eb59d847ffa237714ac88eb0c6d40a",
+      "sha256:400da0d3784fa468caea0fc58f2ebcb7416792056ae12114d7cc936122c76e5f",
+      "sha256:a3b2fed0744a44033189756bd4a487d3fb07cdeeed36e0c3354a46943dd23504"
     ],
     "RepoTags": [
-      "822188381723.dkr.ecr.ap-northeast-3.amazonaws.com/cilab-lifelong-api-master:dev-latest",
-      "822188381723.dkr.ecr.ap-northeast-3.amazonaws.com/cilab-lifelong-api-master:e858664"
+      "822188381723.dkr.ecr.ap-northeast-3.amazonaws.com/cilab-lifelong-api-master:8a2dad1",
+      "822188381723.dkr.ecr.ap-northeast-3.amazonaws.com/cilab-lifelong-api-master:dev-latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2024-11-09T13:33:32.143197635Z",
+      "created": "2024-11-09T13:45:29.827945052Z",
       "history": [
         {
           "created": "2024-01-27T00:30:48Z",
@@ -70,44 +70,44 @@
           "empty_layer": true
         },
         {
-          "created": "2024-11-09T13:32:37Z",
+          "created": "2024-11-09T13:44:32Z",
           "created_by": "RUN /bin/sh -c mkdir -p /usr/src/app/src # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2024-11-09T13:32:37Z",
+          "created": "2024-11-09T13:44:32Z",
           "created_by": "WORKDIR /usr/src/app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2024-11-09T13:32:37Z",
+          "created": "2024-11-09T13:44:32Z",
           "created_by": "COPY package.json /usr/src/app/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2024-11-09T13:33:32Z",
+          "created": "2024-11-09T13:45:29Z",
           "created_by": "RUN /bin/sh -c npm install # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2024-11-09T13:33:32Z",
+          "created": "2024-11-09T13:45:29Z",
           "created_by": "COPY ./src /usr/src/app/src # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2024-11-09T13:33:32Z",
+          "created": "2024-11-09T13:45:29Z",
           "created_by": "USER node",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2024-11-09T13:33:32Z",
+          "created": "2024-11-09T13:45:29Z",
           "created_by": "EXPOSE map[8092/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2024-11-09T13:33:32Z",
+          "created": "2024-11-09T13:45:29Z",
           "created_by": "CMD [\"npm\" \"run\" \"startprd\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -121,11 +121,11 @@
           "sha256:f82bfb71098a9f0cea45528cf948dbeb240a8fa819b9140bdd609ad6cfb32738",
           "sha256:abc5b1d00820bfda3db3fc7771c2171a6fac16dd98da4784b66ea8cbc8808d75",
           "sha256:413c136dedcf2f52c622f952deca19f804d8528256818088a4c12550e5670c2d",
-          "sha256:90b4d9a8c7ea87df21b947a67e3a41309fe5af6eba9d8188d9330a221f2fbe27",
+          "sha256:2a5bc0ad31eba226a20114ca441c2c996d9f4bd7d5d72558c1263b41db9e21b7",
           "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-          "sha256:2ca2fcddc420a4637224b06e33ea1c0b066dbc93c1bb6115ed82828e3499ca33",
-          "sha256:d3e3ce3264938f4a2ed0e1ccf76dae808ae26ca5efd19950c5750b8bb85f7233",
-          "sha256:a09397e53ef6898ebda8d330a551730064ce04e3aca586dc7044e3d994f4b7ee"
+          "sha256:1ca887d2efc36901ab2386a4d760dc4f09eb59d847ffa237714ac88eb0c6d40a",
+          "sha256:400da0d3784fa468caea0fc58f2ebcb7416792056ae12114d7cc936122c76e5f",
+          "sha256:a3b2fed0744a44033189756bd4a487d3fb07cdeeed36e0c3354a46943dd23504"
         ]
       },
       "config": {
@@ -1506,7 +1506,7 @@
           "FixedVersion": "9.0.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:d3e3ce3264938f4a2ed0e1ccf76dae808ae26ca5efd19950c5750b8bb85f7233"
+            "DiffID": "sha256:400da0d3784fa468caea0fc58f2ebcb7416792056ae12114d7cc936122c76e5f"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-23539",
@@ -1566,7 +1566,7 @@
           "FixedVersion": "9.0.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:d3e3ce3264938f4a2ed0e1ccf76dae808ae26ca5efd19950c5750b8bb85f7233"
+            "DiffID": "sha256:400da0d3784fa468caea0fc58f2ebcb7416792056ae12114d7cc936122c76e5f"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-23540",
@@ -1627,7 +1627,7 @@
           "FixedVersion": "9.0.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:d3e3ce3264938f4a2ed0e1ccf76dae808ae26ca5efd19950c5750b8bb85f7233"
+            "DiffID": "sha256:400da0d3784fa468caea0fc58f2ebcb7416792056ae12114d7cc936122c76e5f"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-23541",
@@ -1689,7 +1689,7 @@
           "FixedVersion": "7.5.2, 6.3.1, 5.7.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:d3e3ce3264938f4a2ed0e1ccf76dae808ae26ca5efd19950c5750b8bb85f7233"
+            "DiffID": "sha256:400da0d3784fa468caea0fc58f2ebcb7416792056ae12114d7cc936122c76e5f"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2022-25883",
