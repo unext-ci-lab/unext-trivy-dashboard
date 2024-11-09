@@ -38,7 +38,7 @@
 
     <script>
         async function fetchResults() {
-            const response = await fetch('trivy-results.json'); // Adjust the path as necessary
+            const response = await fetch('cilab-lifelong-api-master-trivy-results.json'); // Adjust the path as necessary
             const data = await response.json();
             return data.Results;
         }
